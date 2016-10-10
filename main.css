@@ -1,0 +1,44 @@
+.overlay {
+  z-index: 999;
+  position:absolute;
+  padding:20px;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.inactive {
+  opacity:0.5;
+}
+
+.memberList .list-group-item{
+  display:flex;
+  align-items: center;
+  min-height:57px;
+}
+
+.memberList .list-group-item .debateSelect {
+  display:flex;
+  padding:5px;
+}
+
+.memberList .list-group-item {
+  justify-content: flex-end;
+}
+.memberList .list-group-item .memberInfo {
+  margin-right:auto;
+}
+
+.debateSelect select,.debateSelect button {
+  width:auto;
+  margin:2px;
+}
+.attendantWrapper {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.attendantName {
+  margin-right:auto;
+}

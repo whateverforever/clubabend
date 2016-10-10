@@ -1,0 +1,15 @@
+{
+  "name":"BP",
+  "description":"The gold standard.",
+  "roles":[
+    {
+      "id":"roleSpeak",
+      "name":"Speaker",
+      "num":8
+    },{
+      "id":"roleJudge",
+      "name":"Judge",
+      "num":"2-4"
+    }
+  ]
+}
