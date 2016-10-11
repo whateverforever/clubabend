@@ -4,68 +4,44 @@
     <meta charset="utf-8">
     <title></title>
     <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
     <script src="./bower_components/chance/dist/chance.min.js" charset="utf-8"></script>
+
     <script src="./misc/prototypes.js"></script>
     <script src="./models/Mitglied.js"></script>
     <script src="./models/Format.js"></script>
     <script src="./models/Rolle.js"></script>
-    <script src="./renderer.js" charset="utf-8"></script>
+
+    <script src="./main.js" charset="utf-8"></script>
+
+    <script src="./sections/generation/generationCtrl.js"></script>
+    <script src="./services/services.js"></script>
+
 
     <link rel="stylesheet" href="./bower_components/photon/dist/css/photon.min.css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="./main.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body ng-app="clubabend" ng-controller="mainCtrl">
-    <div class="overlay">
-      <button class="btn btn-mini btn-default" ng-click="generateMembers()">Generate</button>
-    </div>
+  <body ng-app="clubabend">
     <div class="window">
       <div class="window-content">
         <div class="pane-group">
-          <div class="pane-sm sidebar">...</div>
-          <div class="pane">
-            <ul class="list-group memberList">
-              <li class="list-group-header">
-                <input class="form-control" type="text" placeholder="Search for someone" ng-model="searchQuery">
-              </li>
-              <li class="list-group-item" title="{{member._id}}" ng-repeat="member in members | filter: searchQuery | orderBy: 'lastname' track by member._id">
-                <div class="memberInfo" ng-class="{inactive: member.tmp.inDebate}">
-                  <strong>{{member.firstname}} {{member.lastname}}</strong>
-                </div>
-                <div class="debateSelect" ng-hide="member.tmp.inDebate">
-                  <select class="form-control" ng-model="member.tmp.format" ng-options="format.name for format in formats track by format.name"></select>
-                  <select class="form-control" ng-model="member.tmp.role" ng-options="role.name for role in member.tmp.format.roles"></select>
-                  <button class="btn btn-mini btn-positive" ng-class="{inactive: !member.tmp.format || !member.tmp.role}" ng-click="addAttendant(member)">Add</select>
-                </div>
-              </li>
-              <li class="list-group-item">
-                {{members.length}} Members
-              </li>
-            </ul>
+          <div class="pane-sm sidebar" ng-controller="navCtrl">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">Navigaton</h5>
+              <a class="nav-group-item" href="#/" ng-class="{active:isActive('/')}">
+                <span class="icon icon-sound"></span>
+                Generate Debates
+              </a>
+              <a class="nav-group-item" href="#/settings" ng-class="{active:isActive('/settings')}">
+                <span class="icon icon-cog"></span>
+                Settings
+              </a>
+            </nav>
           </div>
-          <div class="pane">
-            <ul class="list-group">
-              <li class="list-group-header">
-                <input class="form-control" type="text" placeholder="Search for someone" ng-model="searchQuery2">
-              </li>
-              <li class="list-group-item" ng-click="showAttendant($index)" ng-repeat="attendant in attendants | filter: searchQuery2">
-                <div class="media-body attendantWrapper">
-                  <div class="attendantName">
-                    <strong>{{attendant.firstname}} {{attendant.lastname}}</strong>
-                  </div>
-                  {{attendant.tmp.role.name}}
-                  {{attendant.tmp.format.name}}
-                </div>
-              </li>
-            </ul>
-          </div>
+          <div class="pane" ng-view>Loading main view...</div>
         </div>
       </div>
       <footer class="toolbar toolbar-footer">
-        <div class="toolbar-actions">
-          <button class="btn btn-primary pull-right" ng-click="makeDebates()">
-            Generate Debates
-          </button>
-        </div>
       </footer>
     </div>
   </body>

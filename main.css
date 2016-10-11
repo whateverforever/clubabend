@@ -1,6 +1,8 @@
 .overlay {
   z-index: 999;
   position:absolute;
+  left:0;
+  bottom:0;
   padding:20px;
   background-color: #ddd;
   border-radius: 5px;
@@ -16,6 +18,11 @@
   display:flex;
   align-items: center;
   min-height:57px;
+}
+
+.memberList .list-group-item:last-child{
+  display:inherit;
+  text-align: right;
 }
 
 .memberList .list-group-item .debateSelect {

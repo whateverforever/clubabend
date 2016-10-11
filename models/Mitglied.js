@@ -1,7 +1,7 @@
 function Mitglied(firstname,lastname) {
   this.firstname = firstname;
   this.lastname = lastname;
-  this._id = lastname+firstname+new Date().toJSON()
+  this.id = lastname+firstname+new Date().toJSON()
   this.preferences = {
     format:null,
     role:null

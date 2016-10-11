@@ -1,58 +1,55 @@
 // @author Max
 // @description Allocator to fill debate rooms
+
+// IDs of People who want to debate:     scope.attendants
+// Objects of all members:               scope.members
 "use strict";
 
 module.exports = function(){
-  var scope = this;
-  scope.allowedFormats = ["OPD"];
-  scope.availableFormats = [];
-  scope.validMembers = [];
+  var scope = null;
+  this.allowedFormats = ["OPD"];
+  this.leftovers = [];
+  this.validFormats = [];
+  this.validMembers = [];
 
-  this.setFormats = function(formats){
-    for(var i=0;i<formats.length;i++){
-      var format = formats[i];
-      if(scope.allowedFormats.containsObject(format.name)){
-        scope.availableFormats.push(format);
-      }
-    }
-  };
+  this.init = function($scope){
+    scope = $scope;
+    this.setFormats();
+    this.filterMembers();
+    this.makeDebates();
+  }
 
-  this.getMinPplByFormat = function(format){
-    var minPpl = 0;
-
-    for(var j=0;j<format.roles.length;j++){
-      var role = format.roles[j];
-      var num = role.num;
-      if(typeof num === "string"){
-        var minmax = num.split("-");
-        minPpl += parseInt(minmax[0]);
-      }else if(typeof num === "number"){
-        minPpl += num;
+  this.setFormats = function(){
+    for(var format of scope.formats){
+      if(this.allowedFormats.containsObject(format.name)){
+        this.validFormats.push(format);
       }else{
-        console.error("maxAllocator: %s.%s.num neither number nor string",format.name,role.id);
+        console.log("maxAllocator can't build %s debates",format.name);
       }
     }
-
-    return minPpl;
   };
 
-  this.makeDebates = function(members){
-    for(var i=0;i<members.length;i++){
-      var member = members[i];
-      if(scope.allowedFormats.containsObject(member.tmp.format.name)){
-        scope.validMembers.push(member);
-      }
-    }
-
-    for(var i=0;i<scope.availableFormats.length;i++){
-      var format = scope.availableFormats[i];
-      var minPpl = scope.getMinPplByFormat(format);
-      console.log("Min people for %s debate: %d",format.name,minPpl);
-      if(scope.validMembers.length<minPpl){
-        console.error("Cant create %s debate. Too few peoplez",format.name);
+  this.makeDebates = function(){
+    for(var format of this.validFormats){
+      if(this.validMembers.length < format.minPeople()){
+        console.log("Not enough people for %s",format.name);
+        for(var member in this.validMembers){
+          this.leftovers.push(member);
+        }
       }else{
-        console.log("Will create debate :)");
+        console.log("Let's make a debate");
       }
     }
   };
-};
+
+  this.filterMembers = function(){
+    for(var i=0;i<scope.attendants.length;i++){
+      var id = scope.attendants[i];
+      var member = scope.memberByID(id);
+      if(this.allowedFormats.containsObject(member.tmp.format.name)){
+        this.validMembers.push(member);
+      }
+    }
+  };
+
+};//exports
