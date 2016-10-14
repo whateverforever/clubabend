@@ -1,6 +1,7 @@
 {
   "name":"BP",
   "description":"The gold standard.",
+  "author":"max",
   "roles":[
     {
       "id":"roleSpeak",

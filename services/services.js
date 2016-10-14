@@ -36,7 +36,7 @@ app.service("pluginService",function(){
         var files = fs.readdirSync('./plugins/');
         files.forEach(function(f) {
           var plugin = require('./plugins/'+f);
-          availablePlugins.push(plugin);
+          availablePlugins.push(new plugin);
         });
         return availablePlugins;
       }

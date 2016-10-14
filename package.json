@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron init.js"
+    "start": "electron init.js",
+    "test": "./node_modules/http-server/bin/http-server . -a 127.0.0.1 -p 8080"
   },
   "author": "",
   "license": "ISC",

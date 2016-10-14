@@ -33,7 +33,7 @@ app.controller("generationCtrl",function($scope,formatService,pluginService,$rou
 
   $scope.makeDebates = function(){
     //FIXME
-    var plugin = new $scope.plugins[0];
+    var plugin = $scope.plugins[0];
     plugin.init($scope);
   };
 });

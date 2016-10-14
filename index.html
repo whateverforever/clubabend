@@ -14,6 +14,7 @@
 
     <script src="./main.js" charset="utf-8"></script>
 
+    <script src="./sections/settings/settingsCtrl.js"></script>
     <script src="./sections/generation/generationCtrl.js"></script>
     <script src="./services/services.js"></script>
 
@@ -21,11 +22,11 @@
     <link rel="stylesheet" href="./bower_components/photon/dist/css/photon.min.css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="./main.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body ng-app="clubabend">
+  <body ng-app="clubabend" ng-controller="navCtrl">
     <div class="window">
       <div class="window-content">
         <div class="pane-group">
-          <div class="pane-sm sidebar" ng-controller="navCtrl">
+          <div class="pane-sm sidebar">
             <nav class="nav-group">
               <h5 class="nav-group-title">Navigaton</h5>
               <a class="nav-group-item" href="#/" ng-class="{active:isActive('/')}">

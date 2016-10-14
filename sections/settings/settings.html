@@ -1,0 +1,20 @@
+<div class="pane-group">
+  <div id="settingsNav" class="pane-sm">
+    <ul class="list-group">
+      <li class="list-group-item" ng-class="{active:id=='plugins'}" ng-click="goTo('/settings/plugins')">
+        <span class="icon icon-archive media-object pull-left"></span>
+        <div class="media-object">
+          <p>Installed Plugins</p>
+        </div>
+      </li>
+      <li class="list-group-item" ng-class="{active:id=='formats'}" ng-click="goTo('/settings/formats')">
+        <span class="icon icon-menu media-object pull-left"></span>
+        <div class="media-object">
+          <p>Installed Formats</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="pane" ng-include="pluginPath">
+  </div>
+</div>

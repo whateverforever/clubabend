@@ -49,3 +49,14 @@
 .attendantName {
   margin-right:auto;
 }
+#settingsNav .list-group-item a{
+  text-decoration: none;
+}
+
+#settingsNav .list-group-item a:visited{
+  color:#333;
+}
+
+#settingsNav .list-group-item.active a{
+  color:white;
+}

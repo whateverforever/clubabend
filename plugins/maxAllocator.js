@@ -6,6 +6,9 @@
 "use strict";
 
 module.exports = function(){
+  this.name = "Basic Plugin";
+  this.author = "max";
+
   var scope = null;
   this.allowedFormats = ["OPD"];
   this.leftovers = [];

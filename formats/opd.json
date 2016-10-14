@@ -1,6 +1,7 @@
 {
   "name":"OPD",
   "description":"Deutsches Wunderformat. Für 9-99 Jahren.",
+  "author":"max",
   "roles":[
     {
       "id":"roleSpeak",
