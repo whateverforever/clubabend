@@ -10,7 +10,7 @@
     <script src="./misc/prototypes.js"></script>
     <script src="./models/Mitglied.js"></script>
     <script src="./models/Format.js"></script>
-    <script src="./models/Rolle.js"></script>
+    <script src="./models/Debate.js"></script>
 
     <script src="./main.js" charset="utf-8"></script>
 
@@ -42,7 +42,8 @@
           <div class="pane" ng-view>Loading main view...</div>
         </div>
       </div>
-      <footer class="toolbar toolbar-footer">
+      <footer class="toolbar toolbar-footer" ng-class="{red:guiError}">
+        {{guiError}}
       </footer>
     </div>
   </body>

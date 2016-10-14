@@ -1,39 +1,34 @@
-app.controller("generationCtrl",function($scope,formatService,pluginService,$route){
-  $scope.members = [];
-  $scope.attendants = [];
+app.controller("generationCtrl",function($scope,formatService,pluginService,memberService,$route){
+  var ms = memberService;
+  $scope.members = ms.getMembers();
+  $scope.attendants = ms.getAttendants();
   $scope.formats = formatService.getAvailableFormats();
   $scope.plugins = pluginService.getAvailablePlugins();
+  $scope.activePlugin = pluginService.getActivePlugin();
 
   $scope.generateMembers = function(){
     for(var i=0;i<100;i++){
       var person = new Mitglied(chance.first(),chance.last());
-      $scope.members.push(person);
+      ms.addMember(person);
     }
-    $scope.members.push(new Mitglied("Donald J.","Trump"));//godemperor
+    ms.addMember(new Mitglied("Donald J.","Trump"));//godemperor
   };//generateMembers
 
   $scope.addAttendant = function(member){
     member.tmp.inDebate = true;
-    $scope.attendants.push(member.id);
+    ms.addAttendant(member);
   };//addAttendant
-
-  $scope.memberByID = function(id){
-    for(var i=0;i<$scope.members.length;i++){
-      if($scope.members[i].id === id){
-        return $scope.members[i];
-      }
-    }
-    console.error("No member with ID: %s",id);
-    return {};
-  }
 
   $scope.showAttendant = function(i){
     console.log($scope.attendants[i]);
   };
 
   $scope.makeDebates = function(){
-    //FIXME
-    var plugin = $scope.plugins[0];
-    plugin.init($scope);
+    var plugin = $scope.activePlugin;
+    if(plugin){
+      plugin.init($scope);
+    }else{
+      glog("Kein Plugin ist aktiviert! Gehe in die Einstellungen und such dir eins aus.");
+    }
   };
 });

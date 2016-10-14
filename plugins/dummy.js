@@ -6,11 +6,11 @@
 "use strict";
 
 module.exports = function(){
-  this.name = "Basic Plugin";
+  this.name = "Le dummy";
   this.author = "max";
 
   var scope = null;
-  this.allowedFormats = ["OPD"];
+  this.allowedFormats = ["OPD","BP"];
   this.leftovers = [];
   this.validFormats = [];
   this.validMembers = [];

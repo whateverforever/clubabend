@@ -3,12 +3,14 @@
     <tr>
       <th>Name</th>
       <th>Author</th>
+      <th>Formate</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="plugin in plugins">
+    <tr ng-repeat="plugin in plugins" ng-click="setActivePlugin($index)" ng-class="{green:plugin.name == activePlugin.name}">
       <td>{{plugin.name}}</td>
       <td>{{plugin.author}}</td>
+      <td><b ng-repeat="format in plugin.allowedFormats">{{format}} </b></td>
     </tr>
   </tbody>
 </table>

@@ -3,4 +3,11 @@ app.controller("settingsCtrl",function($scope,$location,$routeParams,formatServi
   $scope.pluginPath = "./sections/settings/"+$routeParams.id + ".html";
   $scope.formats = formatService.getAvailableFormats();
   $scope.plugins = pluginService.getAvailablePlugins();
+  $scope.activePlugin = pluginService.getActivePlugin();
+
+  $scope.setActivePlugin = function(index){
+    var plugin = $scope.plugins[index];
+    pluginService.setActivePlugin(plugin);
+    $scope.activePlugin = plugin;
+  };
 });
