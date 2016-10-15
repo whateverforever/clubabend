@@ -1,30 +1,26 @@
 // @author Max
-// @description Allocator to fill debate rooms
+// @description Allocator to fill debate roothis.ms
 
-// IDs of People who want to debate:     scope.attendants
-// Objects of all members:               scope.members
+// Inherits from CAPlugin
+// See ./models/CAPlugin.js for reference
 "use strict";
 
-module.exports = function(){
+function BasicPlugin(){
   this.name = "Basic Plugin";
   this.author = "max";
-
-  var scope = null;
-  this.allowedFormats = ["OPD"];
+  
   this.leftovers = [];
-  this.validFormats = [];
-  this.validMembers = [];
+  this.compatibleFormats = ["OPD"];
 
-  this.init = function($scope){
-    scope = $scope;
+  this.go = function(){
     this.setFormats();
     this.filterMembers();
     this.makeDebates();
-  }
+  };
 
   this.setFormats = function(){
-    for(var format of scope.formats){
-      if(this.allowedFormats.containsObject(format.name)){
+    for(var format of this.fs.getAvailableFormats()){
+      if(this.compatibleFormats.containsObject(format.name)){
         this.validFormats.push(format);
       }else{
         console.log("maxAllocator can't build %s debates",format.name);
@@ -46,12 +42,15 @@ module.exports = function(){
   };
 
   this.filterMembers = function(){
-    for(var i=0;i<scope.attendants.length;i++){
-      var member =  scope.attendants[i];
-      if(this.allowedFormats.containsObject(member.tmp.format.name)){
+    var attendants = this.ms.getAttendants();
+    for(var i=0;i<attendants.length;i++){
+      var member =  attendants[i];
+      if(this.compatibleFormats.containsObject(member.tmp.format.name)){
         this.validMembers.push(member);
       }
     }
   };
+};
 
-};//exports
+BasicPlugin.prototype = Object.create(CAPlugin.prototype);
+module.exports = BasicPlugin;

@@ -31,7 +31,7 @@
           <i class="pull-left">{{attendants.length}} People here tonight</i>
           <button class="btn btn-mini btn-default pull-right" title="Using {{activePlugin.name}} by {{activePlugin.author}}" ng-click="makeDebates()">Make Debates</button>
         </li>
-        <li class="list-group-item" ng-click="showAttendant($index)" ng-repeat="attendant in attendants | filter: searchQuery2">
+        <li class="list-group-item" ng-click="showAttendant($index)" ng-repeat="attendant in members | filter:{tmp:{inDebate:true}} | filter: searchQuery2">
           <div class="media-body attendantWrapper">
             <div class="attendantName">
               <strong>{{attendant.firstname}} {{attendant.lastname}}</strong>

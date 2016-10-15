@@ -7,7 +7,7 @@ var glog = null;
 app.config(function($routeProvider){
   $routeProvider.when("/",{
     templateUrl:"./sections/generation/generation.html",
-    controller:"generationCtrl"
+    controller: "generationCtrl"
   }).when("/settings",{
     templateUrl:"./sections/settings/settings.html",
     controller:"settingsCtrl"
