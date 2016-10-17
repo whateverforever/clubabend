@@ -1,26 +1,24 @@
-function Mitglied(firstname,lastname) {
-  this.firstname = firstname;
-  this.lastname = lastname;
-  this.id = lastname+firstname+new Date().toJSON()
-  this.tmp = {
-    format:null,
-    role:null,
-    inDebate:false
-  };
-}
-
-Mitglied.prototype.setName = function(name){
-  this.firstname = name;
-}
-
-Mitglied.prototype.setFormat = function(format,tmp){
-  if(tmp){
-    this.tmp.format = format;
-  }else{
-    this.preferences.format = format;
+class Mitglied {
+  constructor(firstname,lastname){
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.id = lastname+firstname+new Date().toJSON()
+    this.tmp = {
+      format:null,
+      role:null,
+      inDebate:false
+    };
   }
-}
 
-Mitglied.prototype.setRole = function(role){
-  this.tmp.role = role;
+  setName(name){
+    this.firstname = name;
+  }
+
+  setFormat(format){
+      this.tmp.format = format;
+  }
+
+  setRole(role){
+    this.tmp.role = role;
+  }
 }

@@ -6,27 +6,12 @@
 "use strict";
 
 function BasicPlugin(){
+  CAPlugin.call(this);
   this.name = "Basic Plugin";
   this.author = "max";
-  
+
   this.leftovers = [];
   this.compatibleFormats = ["OPD"];
-
-  this.go = function(){
-    this.setFormats();
-    this.filterMembers();
-    this.makeDebates();
-  };
-
-  this.setFormats = function(){
-    for(var format of this.fs.getAvailableFormats()){
-      if(this.compatibleFormats.containsObject(format.name)){
-        this.validFormats.push(format);
-      }else{
-        console.log("maxAllocator can't build %s debates",format.name);
-      }
-    }
-  };
 
   this.makeDebates = function(){
     for(var format of this.validFormats){
@@ -37,16 +22,6 @@ function BasicPlugin(){
         }
       }else{
         console.log("Let's make a debate");
-      }
-    }
-  };
-
-  this.filterMembers = function(){
-    var attendants = this.ms.getAttendants();
-    for(var i=0;i<attendants.length;i++){
-      var member =  attendants[i];
-      if(this.compatibleFormats.containsObject(member.tmp.format.name)){
-        this.validMembers.push(member);
       }
     }
   };
