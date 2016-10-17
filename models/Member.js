@@ -1,8 +1,8 @@
-class Mitglied {
+class Member {
   constructor(firstname,lastname){
     this.firstname = firstname;
     this.lastname = lastname;
-    this.id = lastname+firstname+new Date().toJSON()
+    this.id = lastname+firstname+new Date().toJSON();
     this.tmp = {
       format:null,
       role:null,

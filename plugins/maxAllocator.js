@@ -5,15 +5,17 @@
 // See ./models/CAPlugin.js for reference
 "use strict";
 
-function BasicPlugin(){
-  CAPlugin.call(this);
-  this.name = "Basic Plugin";
-  this.author = "max";
+class BasicPlugin extends CAPlugin{
+  constructor(){
+    super();
+    this.name = "Basic Plugin";
+    this.author = "max";
 
-  this.leftovers = [];
-  this.compatibleFormats = ["OPD"];
+    this.leftovers = [];
+    this.compatibleFormats = ["OPD"];
+  }
 
-  this.makeDebates = function(){
+  makeDebates(){
     for(var format of this.validFormats){
       if(this.validMembers.length < format.minPeople()){
         glog("Not enough people for %s",format.name);
@@ -27,5 +29,4 @@ function BasicPlugin(){
   };
 };
 
-BasicPlugin.prototype = Object.create(CAPlugin.prototype);
 module.exports = BasicPlugin;

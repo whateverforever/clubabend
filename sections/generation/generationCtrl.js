@@ -9,10 +9,10 @@ app.controller("generationCtrl",function($scope,formatService,pluginService,memb
 
   $scope.generateMembers = function(){
     for(var i=0;i<100;i++){
-      var person = new Mitglied(chance.first(),chance.last());
+      var person = new Member(chance.first(),chance.last());
       ms.addMember(person);
     }
-    ms.addMember(new Mitglied("Donald J.","Trump"));//godemperor
+    ms.addMember(new Member("Donald J.","Trump"));//godemperor
   };//generateMembers
 
   $scope.addAttendant = function(member){
