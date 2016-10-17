@@ -10,10 +10,29 @@ app.controller("generationCtrl",function($scope,formatService,pluginService,memb
   $scope.generateMembers = function(){
     for(var i=0;i<100;i++){
       var person = new Member(chance.first(),chance.last());
+      var tmpHistory = {
+        date:chance.date({string: true}),
+        debate:{},
+        wishGranted:chance.bool()
+      };
+      person.history.push(tmpHistory);
+
       ms.addMember(person);
     }
     ms.addMember(new Member("Donald J.","Trump"));//godemperor
   };//generateMembers
+
+  $scope.makeAttend = function(){
+    var i=0;
+    for(var member of $scope.members){
+      member.tmp.format = fs.formatByName("OPD");
+      $scope.addAttendant(member);
+      i++;
+      if(i>=15){
+        return;
+      }
+    }
+  }
 
   $scope.addAttendant = function(member){
     member.tmp.inDebate = true;

@@ -2,6 +2,14 @@
   "name":"BP",
   "description":"The gold standard.",
   "author":"max",
+  "roles":[
+    {
+      "name":"Speaker",
+      "role":"roleSpeak"
+      },{
+        "name":"Judge",
+        "role":"roleJudge"
+        }],
   "teams":[
     {
       "id":"og",

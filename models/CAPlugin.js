@@ -2,7 +2,7 @@ class CAPlugin {
   constructor(){
     this.name = "Unnamed Plugin";
     this.author = "Unnamed Author";
-    this.validFormats = [];
+    this.validFormats = []; // format objects
     this.validMembers = [];
     this.compatibleFormats = [];
   }
@@ -15,23 +15,21 @@ class CAPlugin {
   }
 
   go(){
-    this.setFormats();
-    this.filterMembers();
+    this.setValidFormats();
+    this.setValidMembers();
     this.makeDebates();
   }
 
-  setFormats(){
+  setValidFormats(){
     for(var format of this.fs.getAvailableFormats()){
       if(this.compatibleFormats.containsObject(format.name)){
         this.validFormats.push(format);
-      }else{
-        console.log("%s can't build %s debates",this.name,format.name);
       }
     }
   }
 
   // Get all the members, with formats this plugin can handle
-  filterMembers(){
+  setValidMembers(){
     var attendants = this.ms.getAttendants();
     for(var i=0;i<attendants.length;i++){
       var member =  attendants[i];
@@ -39,5 +37,9 @@ class CAPlugin {
         this.validMembers.push(member);
       }
     }
+  }
+
+  makeDebates(){
+    console.error("%s doesn't implement makeDebates!!",this.name);
   }
 }//class

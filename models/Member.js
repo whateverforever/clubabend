@@ -3,6 +3,12 @@ class Member {
     this.firstname = firstname;
     this.lastname = lastname;
     this.id = lastname+firstname+new Date().toJSON();
+    this.history = [
+      {
+        date:"0",
+        debate:{},
+        wishGranted: false
+      }];
     this.tmp = {
       format:null,
       role:null,

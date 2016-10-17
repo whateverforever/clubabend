@@ -29,6 +29,13 @@ app.service("formatService",function($http){
   var availableFormats = null;
 
   return {
+    formatByName:function(name){
+      for(var format of availableFormats){
+        if(format.name == name){
+          return format;
+        }
+      }
+    },
     getAvailableFormats: function(){
       if(availableFormats){
         return availableFormats;
