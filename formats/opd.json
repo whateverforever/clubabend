@@ -2,19 +2,23 @@
   "name":"OPD",
   "description":"Deutsches Wunderformat. Für 9-99 Jahren.",
   "author":"max",
-  "roles":[
+  "teams":[
     {
-      "id":"roleSpeak",
-      "name":"Redner",
-      "num":6
+      "id":"gov",
+      "name":"Regierung",
+      "num":3
     },{
-      "id":"roleJudge",
-      "name":"Juror",
-      "num":"2-4"
+      "id":"op",
+      "name":"Opposition",
+      "num":3
     },{
-      "id":"roleIndie",
+      "id":"indie",
       "name":"Freier Redner",
       "num":"0-3"
+    },{
+      "id":"judge",
+      "name":"Juroren",
+      "num":"2-3"
     }
   ]
 }

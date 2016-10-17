@@ -2,13 +2,25 @@
   "name":"BP",
   "description":"The gold standard.",
   "author":"max",
-  "roles":[
+  "teams":[
     {
-      "id":"roleSpeak",
-      "name":"Speaker",
-      "num":8
+      "id":"og",
+      "name":"Opening Gov",
+      "num":2
     },{
-      "id":"roleJudge",
+      "id":"oo",
+      "name":"Opening Op",
+      "num":2
+    },{
+      "id":"cg",
+      "name":"Closing Gov",
+      "num":2
+    },{
+      "id":"co",
+      "name":"Closing Op",
+      "num":2
+    },{
+      "id":"judge",
       "name":"Judge",
       "num":"2-4"
     }
