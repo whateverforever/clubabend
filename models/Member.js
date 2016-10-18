@@ -5,7 +5,7 @@ class Member {
     this.id = lastname+firstname+new Date().toJSON();
     this.history = [
       {
-        date:"0",
+        date:"0-dummy",
         debate:{},
         wishGranted: false
       }];

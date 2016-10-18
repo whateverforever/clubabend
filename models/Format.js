@@ -7,8 +7,8 @@ class Format{
 
   minPeople(){
     var minPeople = 0;
-    for(var i=0;i<this.teams.length;i++){
-      var team = this.teams[i];
+    for(var team of this.teams){
+
       if(typeof team.num === "number"){
         minPeople += team.num;
       }else if(typeof team.num === "string"){

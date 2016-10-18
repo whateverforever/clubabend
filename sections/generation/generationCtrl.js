@@ -19,6 +19,7 @@ app.controller("generationCtrl",function($scope,formatService,pluginService,memb
 
       ms.addMember(person);
     }
+    console.error("asdasdasdasd");
     ms.addMember(new Member("Donald J.","Trump"));//godemperor
   };//generateMembers
 

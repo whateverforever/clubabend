@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>clubabend</title>
     <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
     <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
     <script src="./bower_components/chance/dist/chance.min.js" charset="utf-8"></script>
@@ -18,7 +18,6 @@
     <script src="./sections/settings/settingsCtrl.js"></script>
     <script src="./sections/generation/generationCtrl.js"></script>
     <script src="./services/services.js"></script>
-
 
     <link rel="stylesheet" href="./bower_components/photon/dist/css/photon.min.css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="./main.css" media="screen" title="no title" charset="utf-8">
@@ -43,8 +42,12 @@
           <div class="pane" ng-view>Loading main view...</div>
         </div>
       </div>
+      <div class="errorListWrapper" ng-show="displayErrors">
+        <h4>Errors</h4>
+        <p ng-repeat="error in errors">{{error}}</p>
+      </div>
       <footer class="toolbar toolbar-footer" ng-class="{red:guiError}">
-        {{guiError}}
+        {{guiError}} <span class="pull-right errorIcon" ng-show="errors.length > 0" ng-click="showErrors()"><span class="icon icon-attention"></span>{{errors.length}}</span>
       </footer>
     </div>
   </body>
